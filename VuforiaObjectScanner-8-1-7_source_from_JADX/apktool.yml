@@ -1,0 +1,26 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: VuforiaObjectScanner-8-1-7.apk
+compressionType: false
+doNotCompress:
+- arsc
+- png
+- res/drawable/edit_text_error_image.9.png
+- res/drawable/edit_text_image.9.png
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '15'
+  targetSdkVersion: '22'
+sharedLibrary: false
+sparseResources: false
+unknownFiles: {}
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.3.4
+versionInfo:
+  versionCode: '8001007'
+  versionName: 8.1.7

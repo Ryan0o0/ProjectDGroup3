@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/bottom" android:background="#9e9e9e" android:layout_width="match_parent" android:layout_height="48dp" android:layout_alignParentBottom="true">
+        <Button android:textColor="#ffffff" android:id="@+id/test_btn" android:background="#343434" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="1dp" android:text="Test" android:layout_weight="1"/>
+        <View android:background="#9e9e9e" android:layout_width="1dp" android:layout_height="match_parent"/>
+        <Button android:textColor="#ffffff" android:id="@+id/cont_scan_btn" android:background="#343434" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="1dp" android:text="Cont Scan" android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:background="#fff" android:layout_width="match_parent" android:layout_height="match_parent" android:baselineAligned="false" android:layout_above="@+id/bottom">
+        <RelativeLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="100">
+            <View android:id="@+id/half_height" android:layout_width="0dp" android:layout_height="0dp" android:layout_centerVertical="true"/>
+            <ImageView android:id="@+id/item_capture_image" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:layout_above="@+id/half_height" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"/>
+            <RelativeLayout android:id="@+id/item_capture_coverage_layout" android:background="@color/light_gray" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@+id/half_height" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+                <ImageView android:id="@+id/item_capture_coverage" android:padding="10dp" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="fitCenter"/>
+                <ImageView android:id="@+id/item_capture_axis" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginLeft="0dp" android:layout_marginBottom="0dp" android:src="@drawable/axis_lines" android:scaleType="fitCenter" android:layout_alignBaseline="@+id/item_capture_coverage" android:layout_alignLeft="@+id/item_capture_coverage"/>
+            </RelativeLayout>
+        </RelativeLayout>
+        <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="44">
+            <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/activity_horizontal_margin" android:paddingTop="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_horizontal_margin" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="12sp" android:textColor="#a9a9a9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginTop="5dp" android:text="@string/capture_name"/>
+                <TextView android:textSize="16sp" android:textColor="#000" android:id="@+id/capture_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+                <TextView android:textSize="12sp" android:textColor="#a9a9a9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginTop="10dp" android:text="@string/last_modified"/>
+                <TextView android:textSize="16sp" android:textColor="#000" android:id="@+id/last_modified" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+                <TextView android:textSize="12sp" android:textColor="#a9a9a9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginTop="10dp" android:text="@string/capture_file_size"/>
+                <TextView android:textSize="16sp" android:textColor="#000" android:id="@+id/capture_file_size" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+                <TextView android:textSize="12sp" android:textColor="#a9a9a9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginTop="10dp" android:text="@string/capture_points"/>
+                <TextView android:textSize="16sp" android:textColor="#000" android:id="@+id/capture_points" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

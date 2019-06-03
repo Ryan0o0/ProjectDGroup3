@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:background="#efefef" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/bottom" android:background="#9e9e9e" android:layout_width="match_parent" android:layout_height="48dp" android:layout_alignParentBottom="true">
+        <Button android:textColor="#ffffff" android:id="@+id/BtnCancel" android:background="#343434" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="1dp" android:text="@android:string/cancel" android:layout_weight="1"/>
+        <View android:background="#9e9e9e" android:layout_width="1dp" android:layout_height="match_parent"/>
+        <Button android:textColor="#ffffff" android:id="@+id/BtnOk" android:background="#343434" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="1dp" android:text="@android:string/ok" android:layout_weight="1"/>
+    </LinearLayout>
+    <GridView android:gravity="center" android:id="@+id/gridView_capture" android:background="#efefef" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:horizontalSpacing="10dp" android:verticalSpacing="10dp" android:stretchMode="columnWidth" android:numColumns="@string/columsNumber" android:layout_above="@+id/bottom" android:layout_alignParentTop="true"/>
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent" android:layout_above="@+id/bottom">
+        <LinearLayout android:id="@+id/empty_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <TextView android:textSize="28sp" android:textColor="#ccc" android:gravity="center" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="Tap "/>
+            <TextView android:textSize="42sp" android:textColor="#ccc" android:gravity="center" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="+" android:fontFamily="sans-serif-light"/>
+            <TextView android:textSize="28sp" android:textColor="#ccc" android:gravity="center" android:layout_width="wrap_content" android:layout_height="match_parent" android:text=" to scan an object"/>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

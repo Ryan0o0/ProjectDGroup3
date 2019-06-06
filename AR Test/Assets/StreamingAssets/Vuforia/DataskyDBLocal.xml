@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="CheckerPlane2" size="20.000000 16.628866" />
+    <ImageTarget name="CheckerPlane1" size="20.000000 20.010204" />
+    <ImageTarget name="WatchPlane" size="20.000000 50.607868" />
+    <ImageTarget name="PhonePlane" size="20.000000 40.476189" />
+    <ImageTarget name="Plane" size="50.000000 103.278687" />
+    <ImageTarget name="PlaneWithSurface" size="50.000000 103.278687" />
+    <ImageTarget name="sample_stones" size="50.000000 35.000000" />
+  </Tracking>
+</QCARConfig>

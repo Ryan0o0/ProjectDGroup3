@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/markername"
+    android:textColor="#FFFFFF"
+    android:gravity="center"
+    android:textSize="6sp"
+    android:padding="3dp"
+    android:textStyle="bold"
+
+    android:text="Default"
+
+
+    android:background="@drawable/markerbg"
+    >
+
+</TextView>

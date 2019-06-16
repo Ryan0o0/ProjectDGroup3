@@ -27,34 +27,39 @@ import android.graphics.RectF;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.util.TypedValue;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+
+import org.tensorflow.lite.examples.detection.CameraActivity;
 import org.tensorflow.lite.examples.detection.env.BorderedText;
 import org.tensorflow.lite.examples.detection.env.ImageUtils;
 import org.tensorflow.lite.examples.detection.env.Logger;
+import org.tensorflow.lite.examples.detection.tflite.Classifier;
 import org.tensorflow.lite.examples.detection.tflite.Classifier.Recognition;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /** A tracker that handles non-max suppression and matches existing objects to new detections. */
 public class MultiBoxTracker {
   private static final float TEXT_SIZE_DIP = 18;
   private static final float MIN_SIZE = 16.0f;
   private static final int[] COLORS = {
-    Color.BLUE,
-    Color.RED,
-    Color.GREEN,
-    Color.YELLOW,
-    Color.CYAN,
-    Color.MAGENTA,
-    Color.WHITE,
-    Color.parseColor("#55FF55"),
-    Color.parseColor("#FFA500"),
-    Color.parseColor("#FF8888"),
-    Color.parseColor("#AAAAFF"),
-    Color.parseColor("#FFFFAA"),
-    Color.parseColor("#55AAAA"),
-    Color.parseColor("#AA33AA"),
-    Color.parseColor("#0D0068")
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF"),
+          Color.parseColor("#60FFFFFF")
+
   };
   final List<Pair<Float, RectF>> screenRects = new LinkedList<Pair<Float, RectF>>();
   private final Logger logger = new Logger();
@@ -126,12 +131,16 @@ public class MultiBoxTracker {
         Math.min(
             canvas.getHeight() / (float) (rotated ? frameWidth : frameHeight),
             canvas.getWidth() / (float) (rotated ? frameHeight : frameWidth));
+
+    final float multiplierWidth   = canvas.getWidth() / (float) (rotated ? frameHeight : frameWidth);
+    final float multiplierHeight  = canvas.getHeight() / (float) (rotated ? frameWidth : frameHeight);
+
     frameToCanvasMatrix =
         ImageUtils.getTransformationMatrix(
             frameWidth,
             frameHeight,
-            (int) (multiplier * (rotated ? frameHeight : frameWidth)),
-            (int) (multiplier * (rotated ? frameWidth : frameHeight)),
+            (int) (multiplierWidth * (rotated ? frameHeight : frameWidth)),
+            (int) (multiplierHeight * (rotated ? frameWidth : frameHeight)),
             sensorOrientation,
             false);
     for (final TrackedRecognition recognition : trackedObjects) {
@@ -155,7 +164,10 @@ public class MultiBoxTracker {
   }
 
   private void processResults(final List<Recognition> results) {
-    final List<Pair<Float, Recognition>> rectsToTrack = new LinkedList<Pair<Float, Recognition>>();
+    final List<Pair<Float, Recognition>>  rectsToTrack =
+            new LinkedList<Pair<Float, Recognition>>();
+    final List<Recognition>    mappedRecognitionsAdapted =
+            new LinkedList<Recognition>();
 
     screenRects.clear();
     final Matrix rgbFrameToScreen = new Matrix(getFrameToCanvasMatrix());
@@ -169,6 +181,14 @@ public class MultiBoxTracker {
       final RectF detectionScreenRect = new RectF();
       rgbFrameToScreen.mapRect(detectionScreenRect, detectionFrameRect);
 
+      final Classifier.Recognition newResult  = new Classifier.Recognition(
+              result.getId(),
+              result.getTitle(),
+              result.getConfidence(),
+              detectionScreenRect);
+
+      mappedRecognitionsAdapted.add(newResult);
+
       logger.v(
           "Result! Frame: " + result.getLocation() + " mapped to screen:" + detectionScreenRect);
 
@@ -181,6 +201,9 @@ public class MultiBoxTracker {
 
       rectsToTrack.add(new Pair<Float, Recognition>(result.getConfidence(), result));
     }
+
+    CameraActivity.mappedRecognitionsAvailable = mappedRecognitionsAdapted;
+
 
     if (rectsToTrack.isEmpty()) {
       logger.v("Nothing to track, aborting.");

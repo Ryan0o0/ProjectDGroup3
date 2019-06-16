@@ -35,6 +35,16 @@
             android:layout_height="match_parent"
             tools:context="org.tensorflow.demo.CameraActivity" />
 
+        <fragment android:name="com.google.ar.sceneform.ux.ArFragment"
+            android:id="@+id/ux_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <org.tensorflow.lite.examples.detection.customview.OverlayView
+            android:id="@+id/tracking_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -47,12 +57,12 @@
 
     </RelativeLayout>
 
-    <include
+    <!--<include
         android:id="@+id/bottom_sheet_layout"
-        layout="@layout/layout_bottom_sheet" />
+        layout="@layout/layout_bottom_sheet" />-->
 
-    <include
+    <!--<include
         android:id="@+id/sceneform_ux_id"
-        layout="@layout/activity_ux" />
+        layout="@layout/activity_ux" />-->
 
 </android.support.design.widget.CoordinatorLayout>

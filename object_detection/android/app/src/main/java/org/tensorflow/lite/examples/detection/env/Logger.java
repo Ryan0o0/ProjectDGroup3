@@ -16,6 +16,7 @@ limitations under the License.
 package org.tensorflow.lite.examples.detection.env;
 
 import android.util.Log;
+
 import java.util.HashSet;
 import java.util.Set;
 

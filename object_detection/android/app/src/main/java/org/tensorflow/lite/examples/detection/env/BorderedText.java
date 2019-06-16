@@ -22,6 +22,7 @@ import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+
 import java.util.Vector;
 
 /** A class that encapsulates the tedious bits of rendering legible, bordered text onto a canvas. */
@@ -84,7 +85,7 @@ public class BorderedText {
     float width = exteriorPaint.measureText(text);
     float textSize = exteriorPaint.getTextSize();
     Paint paint = new Paint(bgPaint);
-    paint.setStyle(Paint.Style.FILL);
+    paint.setStyle(Style.FILL);
     paint.setAlpha(160);
     canvas.drawRect(posX, (posY + (int) (textSize)), (posX + (int) (width)), posY, paint);
 
